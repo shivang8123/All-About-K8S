@@ -1,0 +1,14 @@
+# Error 16: Readiness probe failed
+# Pod is Running but never becomes Ready (READY 0/1), so it receives no traffic.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: readiness-demo
+  labels: {app: readiness-demo}
+spec:
+  containers:
+  - name: web
+    image: nginx:1.25
+    readinessProbe:
+      httpGet: {path: /ready, port: 80}
+      periodSeconds: 5

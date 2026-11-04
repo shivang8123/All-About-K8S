@@ -1,0 +1,15 @@
+# Error 02: OOMKilled (137)
+# The process tries to allocate ~200Mi but the limit is 50Mi.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: oom-demo
+spec:
+  containers:
+  - name: stress
+    image: polinux/stress
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "200M", "--vm-hang", "1"]
+    resources:
+      requests: {memory: "30Mi"}
+      limits: {memory: "50Mi"}

@@ -1,0 +1,15 @@
+# Error 05: Liveness probe failed
+# nginx has no /healthz path (404), so the liveness probe fails and the container restarts.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-demo
+spec:
+  containers:
+  - name: web
+    image: nginx:1.25
+    livenessProbe:
+      httpGet: {path: /healthz, port: 80}
+      initialDelaySeconds: 3
+      periodSeconds: 5
+      failureThreshold: 2

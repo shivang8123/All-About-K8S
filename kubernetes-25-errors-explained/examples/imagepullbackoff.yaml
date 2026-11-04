@@ -1,0 +1,10 @@
+# Errors 06 + 07: ErrImagePull -> ImagePullBackOff
+# The tag does not exist in the registry.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: imagepull-demo
+spec:
+  containers:
+  - name: web
+    image: nginx:this-tag-does-not-exist

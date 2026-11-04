@@ -1,0 +1,11 @@
+# Error 21: PVC Pending
+# The StorageClass does not exist, so the claim can never be bound.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-demo
+spec:
+  storageClassName: this-storageclass-does-not-exist
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests: {storage: 1Gi}

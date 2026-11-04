@@ -1,0 +1,10 @@
+# Error 08: InvalidImageName
+# Repository names must be lowercase.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: invalid-image-demo
+spec:
+  containers:
+  - name: web
+    image: "NGINX:Latest"
